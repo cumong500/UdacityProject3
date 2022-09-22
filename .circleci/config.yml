@@ -167,6 +167,7 @@ jobs:
             cd .circleci/ansible
             cat inventory.txt
             export ANSIBLE_HOST_KEY_CHECKING=False
+            export RECORD_HOST_KEYS=False
             ansible-playbook -i inventory.txt configure-server.yml
             
       - destroy-environment:
