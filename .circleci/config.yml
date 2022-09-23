@@ -167,8 +167,8 @@ jobs:
             cd .circleci/ansible
             cat inventory.txt
             export ANSIBLE_HOST_KEY_CHECKING=False
+            export ANSIBLE_RECORD_HOST_KEYS=False
             ansible-playbook -i inventory.txt configure-server.yml
-            no_output_timeout: 30m
             
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
