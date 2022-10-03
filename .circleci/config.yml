@@ -207,24 +207,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-        at: ~/project/.circleci/ansible
+          at: ~/project/.circleci/ansible
       - run:
           name: Install dependencies
           command: |
             python --version
-            node --version
-            npm --version
-      - run:
-          name: Get backend url
-          command: |
-            # your code here
-            export API_URL="http://${BACKEND_IP}:3030"
-            echo "${API_URL}"
-      - run:
-          name: Deploy frontend objects
-          command: |
-            # your code here
-            exit 1
       # Here's where you will add some code to rollback on failure          
 
 workflows:
