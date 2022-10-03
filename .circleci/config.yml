@@ -224,6 +224,7 @@ jobs:
           name: Deploy frontend objects
           command: |
             # your code here
+            exit 1
       # Here's where you will add some code to rollback on failure          
 
 workflows:
