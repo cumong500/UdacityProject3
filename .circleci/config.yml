@@ -251,20 +251,22 @@ jobs:
           command: |
             apk add tar 
             apk add gzip
-            apk add --update ansible
-            apk add --update nodejs npm
+            apk add --update curl nodejs npm
+            apk add --update ansible zip
             pip install awscli --upgrade
       - run:
           name: Deploy backend
           command: |
             cd backend
-            npm i
+            npm install typescript@latest -g
+            npm install
             npm run build
 
             # Zip the directory
             tar -czf artifact.tar.gz dist/* package*
-            cd ..
+
             # Copy
+            cd ..
             cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/tasks
 
             cd .circleci/ansible

@@ -11,7 +11,7 @@
 - name: "Install node"
   shell: |
     cd ~/backend-app
-    npm i
+    npm install
 
 - name: "Start app"
   shell: |
