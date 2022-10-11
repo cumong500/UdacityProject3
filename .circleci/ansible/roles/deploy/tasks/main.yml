@@ -1,20 +1,20 @@
 - name: "Create directory"
   file:
-    path: ~/backend
+    path: ~/backend-app
     state: directory
 
 - name: "Unzip artifact"
   unarchive:
     src: artifact.tar.gz
-    dest: ~/backend
+    dest: ~/backend-app
 
 - name: "Install dependencies"
   shell: |
-    cd ~/backend
+    cd ~/backend-app
     npm i
 - name: "Start app"
   shell: |
-    cd ~/backend/dist
+    cd ~/backend-app/dist
     pm2 stop default
     pm2 start main.js
 
