@@ -251,24 +251,18 @@ jobs:
           command: |
             apk add tar 
             apk add gzip
-            apk add --update curl nodejs npm
-            apk add --update ansible zip
+            apk add --update nodejs npm
+            apk add --update ansible
             pip install awscli --upgrade
       - run:
           name: Deploy backend
           command: |
             cd backend
-            npm install typescript@latest -g
-            npm install
+            npm i
             npm run build
-
-            # Zip the directory
-            tar -czf artifact.tar.gz dist/* package*
-
-            # Copy
+            
             cd ..
-            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/tasks
-
+            tar -C backend -czvf .circleci/ansible/deploy/tasks/artifact.tar.gz .
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
