@@ -196,7 +196,7 @@ jobs:
             cat ~/project/backend/migrations_dump.txt
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              curl --insecure https://kvdb.io/JWVjZvBjcV5Ac3XiYMUDgr/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+              curl --insecure https://kvdb.io/LhSsF2Ranoayo7BK5RJkH9/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
@@ -261,8 +261,9 @@ jobs:
             npm i
             npm run build
             
+            tar -czf artifact.tar.gz dist/* package*
             cd ..
-            tar -C backend -czvf .circleci/ansible/roles/deploy/tasks/artifact.tar.gz .
+            cp backend/artifact.tar.gz .circleci/ansible/roles/deploy/files
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
