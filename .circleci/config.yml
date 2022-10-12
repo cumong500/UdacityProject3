@@ -254,11 +254,15 @@ jobs:
             apk add --update nodejs npm
             apk add --update ansible
             pip install awscli --upgrade
+            node -v
+            npm -v
       - run:
           name: Deploy backend
           command: |
             cd backend
             npm i
+            node -v
+            npm -v
             npm run build
             
             tar -czf artifact.tar.gz dist/* package*
