@@ -12,9 +12,9 @@
 - name: "Install node"
   shell: |
     cd ~/backend-app
-    node -v
-    npm -v
+    chown -R $(whoami):root $(npm root -g)
     npm i
+    npm -v
     
 - name: "Start app"
   shell: |
