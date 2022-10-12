@@ -12,8 +12,8 @@
 - name: "Install node"
   shell: |
     cd ~/backend-app
-    chown -R $(whoami):root $(npm root -g)
-    npm i
+    sudo apt-get install nodejs npm -y
+    sudo chown -R $(whoami):root $(npm root -g)
     npm -v
     
 - name: "Start app"
