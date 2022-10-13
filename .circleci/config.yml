@@ -288,7 +288,7 @@ jobs:
             echo "TYPEORM_DATABASE=${TYPEORM_DATABASE}" >> backend/.env  
             
             echo "${NODE_ENV}"
-            echo "${VERSION}|
+            echo "${VERSION}"
             echo "${TYPEORM_CONNECTION}"
             echo "${TYPEORM_MIGRATIONS_DIR}"
             echo "${TYPEORM_ENTITIES}"
